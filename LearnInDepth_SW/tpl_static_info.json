@@ -1,0 +1,144 @@
+
+{
+  "alarm" : 
+  [
+    
+    {
+      "ACTION" : "SETEVENT",
+      "ACTION_S" : 
+      {
+        "EVENT" : "Time_10ms_Event",
+        "TASK" : "ReadDoorT"
+      },
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "ALARMTIME" : 10,
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "AppStd"
+          }
+        ],
+        "CYCLETIME" : 10
+      },
+      "COUNTER" : "SystemCounter",
+      "NAME" : "Time10ms_Alarm"
+    }
+  ],
+  "event" : 
+  [
+    
+    {
+      "MASK" : 1,
+      "NAME" : "LedSwitchInvokeEvent",
+      "REF" : 1
+    },    
+    {
+      "MASK" : 1,
+      "NAME" : "Time_10ms_Event",
+      "REF" : 1
+    },    
+    {
+      "MASK" : 1,
+      "NAME" : "DoorStateReceivedEvent",
+      "REF" : 1
+    }
+  ],
+  "ioc" : [],
+  "isr" : [],
+  "message" : [],
+  "resource" : [],
+  "task" : 
+  [
+    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "AppStd"
+          }
+        ]
+      },
+      "EVENT" : 
+      [
+        
+        {
+          "VALUE" : "DoorStateReceivedEvent"
+        }
+      ],
+      "KIND" : "Task",
+      "NAME" : "DoorLockIndicationTask",
+      "NONPREEMPTABLE" : "false",
+      "PRIORITY" : 1,
+      "SCHEDULE" : "FULL",
+      "STACKSIZE" : 3000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    },    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "AppStd"
+          }
+        ]
+      },
+      "EVENT" : 
+      [
+        
+        {
+          "VALUE" : "LedSwitchInvokeEvent"
+        }
+      ],
+      "KIND" : "Task",
+      "NAME" : "LEDSwitchTask",
+      "NONPREEMPTABLE" : "false",
+      "PRIORITY" : 2,
+      "SCHEDULE" : "FULL",
+      "STACKSIZE" : 3000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    },    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "AppStd"
+          }
+        ]
+      },
+      "EVENT" : 
+      [
+        
+        {
+          "VALUE" : "Time_10ms_Event"
+        }
+      ],
+      "KIND" : "Task",
+      "NAME" : "ReadDoorT",
+      "NONPREEMPTABLE" : "false",
+      "PRIORITY" : 2,
+      "SCHEDULE" : "FULL",
+      "STACKSIZE" : 3000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    }
+  ]
+}
